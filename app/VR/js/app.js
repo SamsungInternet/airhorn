@@ -42,4 +42,6 @@ var toggleMoreInfo = function(){
 var hideSplash = function(){
     document.querySelector('#splash').style.display = 'none';
     document.querySelector('#airhorn').load();
+    document.querySelector('#virt_airhorn').addEventListener('click', playTag);
+
 };
