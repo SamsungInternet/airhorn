@@ -1,0 +1,62 @@
+body{
+    font-family:'Samsung One'; 
+    color:white;
+}
+
+#splash{
+    width: 100%;
+    height: 100%;
+    background-color: #2196F3;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index:10;
+}
+
+#maincontent{
+    margin:auto;
+    padding:1em;
+    width: 25em;
+}
+
+#logo{
+    margin: auto;
+    display: block;
+    width: 20em;
+}
+
+#silogo{
+    margin: auto;
+    display: block;
+    width: 6em;
+    margin-top: .5em;
+}
+
+#moreIco{
+    width: 1.5em;
+    padding: .5em;
+    cursor:pointer;
+    margin: auto;
+    display: block;
+}
+
+.flexRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.btn{
+    border: 2 solid #fff;
+    padding: .2em;
+    border-radius: 1em;
+    cursor: pointer;
+    width: 6em;
+    text-align: center;
+}
+
+a:link, a:hover, a:visited, a:active{
+    color: #fff;
+    text-decoration: underline;
+}

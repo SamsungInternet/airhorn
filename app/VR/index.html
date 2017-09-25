@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang=en-GB>
+  <head>
+    <meta charset='utf-8'>
+    <title>The [WebVR] Air Horner</title>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='description' content='A [WebVR] Air horn. Probably the best [virtual] air horn web app there is.'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="js/app.js"></script>
+    <meta name='application-name' content='VR Air Horner'>
+    <meta name='theme-color' content='#2196F3'>
+    <link rel="stylesheet" href="f/fonts.css">
+    <meta name='twitter:creator' content='@diekus'>
+    <link  rel='stylesheet' href="styles/main.css">
+    <link rel="shortcut icon" href="images/favicon.png">
+  </head>
+  <body>
+    <div id="splash">
+      <div id="maincontent">
+        <img src="images/airhornervr.svg" id="logo">
+        <div id="moreInfo">
+          <p>A [WebVR] Air horn. Probably the best [virtual] air horn web app there is.</p>
+          <div class="flexRow">
+              <span class="btn" onclick="toggleMoreInfo()"><strong><a href="#">Why?</a></strong></span>
+              <span class="btn" onclick="hideSplash()"><strong><a href="#">Start</a></strong></span>
+          </div>
+          <div id="more">
+              <p>A WebVR PWA example based in <a href="https://twitter.com/paul_kinlan">@paul_kinlan</a>'s most successful PWA, cause immitation is the best form of flattery. App by <a href="https://twitter.com/diekus">@diekus</a> from the <a href="https://twitter.com/samsunginternet">@samsunginternet</a> team</p>
+          </div>
+          <img src="images/si4gvr_logo.svg" id="silogo">
+        </div>
+      </div>
+    </div>
+    <a-scene>
+        <a-assets>
+          <audio id="airhorn" src="sound/airhorn.mp3"></audio>
+        </a-assets>
+        <a-entity id="cam" camera look-controls position="0 1.7 0"> 
+            <a-entity cursor position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity> 
+        </a-entity>
+        <a-sky color="#2196F3"></a-sky>
+        <a-sphere position="0 2 -4" radius="2" color="#B71C1C"></a-sphere>
+    </a-scene>
+  </body>
+</html>
