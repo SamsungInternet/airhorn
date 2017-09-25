@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var _setupTag = function(){
     //gets the tag with the media element
-    tag = document.getElementById('airhorn');
+    tag = document.getElementById('airhorn_audio');
     //creates a source based on this element
     var src = audioCtx.createMediaElementSource(tag);
     //gain node for volume
@@ -41,7 +41,8 @@ var toggleMoreInfo = function(){
 
 var hideSplash = function(){
     document.querySelector('#splash').style.display = 'none';
-    document.querySelector('#airhorn').load();
+    document.querySelector('#airhorn_audio').load();
     document.querySelector('#virt_airhorn').addEventListener('click', playTag);
+    document.querySelector('#virt_airhorn').emit('startHorn');
 
 };
