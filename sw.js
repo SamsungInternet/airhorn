@@ -1,12 +1,15 @@
 // Perform install steps
-var CACHE_NAME = 'bubble-v1';
+var CACHE_NAME = 'airhornvr-v1';
 var urlsToCache = [
-    'css/style.css',
-    'js/aroundviewer.js',
-    'js/e/aframe.js',
-    'i/bubbleicon.png',
-    'i/uploadButton.png',
-    'i/around.jpg'
+    'styles/main.css',
+    'sound/airhorn.mp3',
+    'js/aframe.min.js',
+    'js/app.js',
+    'images/airhorner.png',
+    'images/airhornervr.svg',
+    'images/favicon.png',
+    'images/si4gvr_logo.svg',
+    'index.html'
 ];
 
 self.addEventListener('install', function(event) {
@@ -36,7 +39,7 @@ self.addEventListener('fetch', function(event) {
 
 self.addEventListener('activate', function(event) {
 
-  var cacheWhitelist = ['bubble-v1'];
+  var cacheWhitelist = ['airhornvr-v1'];
 
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
