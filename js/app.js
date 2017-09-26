@@ -12,18 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
 /* AUDIO SETUP */
 var _setupAudioBuffer = function(){
     var request = new XMLHttpRequest();
-    request.open('GET', '/sound/airhorn.mp3', true);
+    request.open('GET', 'https://diekus.net/airhorn/sound/airhorn.mp3', true);
     request.responseType = 'arraybuffer';
     //Decode async
     request.onload = function(){
+        // audioCtx.decodeAudioData(request.response).then(function(decodedData){
+        //     airhorn_buffer = decodedData;
+        // });
 
-        audioCtx.decodeAudioData(request.response).then(function(decodedData){
-            airhorn_buffer = decodedData;
-        });
-
-        // audioCtx.decodeAudioData(request.response, function(theBuffer){
-        //     airhorn_buffer = theBuffer;
-        // }, onAudioLoadError);
+        audioCtx.decodeAudioData(request.response, function(theBuffer){
+            airhorn_buffer = theBuffer;
+        }, onAudioLoadError);
 
     };
     request.send();
@@ -55,7 +54,7 @@ var toggleMoreInfo = function(){
 };
 
 var playAirhorn = function(){
-    playSound(airhorn_buffer);
+    playSound();
 };
 
 var hideSplash = function(){
