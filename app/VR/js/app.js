@@ -1,29 +1,38 @@
 let audioCtx = null;
 let tag = null;
+let airhorn_buffer = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     //sets up the audio based on the html sound of the airhorn
-    _setupTag();
     toggleMoreInfo();
+    _setupAudioBuffer();
 });
 
-var _setupTag = function(){
-    //gets the tag with the media element
-    tag = document.getElementById('airhorn_audio');
-    //creates a source based on this element
-    var src = audioCtx.createMediaElementSource(tag);
-    //gain node for volume
-    var gainNode = audioCtx.createGain();
-    gainNode.gain.value = 1;
-    //connects nodes
-    src.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+/* AUDIO SETUP */
+var _setupAudioBuffer = function(){
+    var request = new XMLHttpRequest();
+    request.open('GET', '/sound/airhorn.mp3', true);
+    request.responseType = 'arraybuffer';
+    //Decode async
+    request.onload = function(){
+        audioCtx.decodeAudioData(request.response, function(theBuffer){
+            airhorn_buffer = theBuffer;
+        }, onAudioLoadError);
+    };
+    request.send();
 };
 
-var playTag = function(){
-    tag.play();
+var onAudioLoadError = function(){
+    console.log('error');
 };
+
+function playSound(){
+    var source = audioCtx.createBufferSource();
+    source.buffer = airhorn_buffer;
+    source.connect(audioCtx.destination);
+    source.start(0);
+}
 
 var toggleMoreInfo = function(){
     var moreInfoDiv = document.querySelector('#more');
@@ -39,10 +48,14 @@ var toggleMoreInfo = function(){
     }
 };
 
+var playAirhorn = function(){
+    playSound(airhorn_buffer);
+};
+
 var hideSplash = function(){
     document.querySelector('#splash').style.display = 'none';
     document.querySelector('#airhorn_audio').load();
-    document.querySelector('#virt_airhorn').addEventListener('click', playTag);
+    document.querySelector('#virt_airhorn').addEventListener('click', playAirhorn);
     document.querySelector('#virt_airhorn').emit('startHorn');
 
 };
