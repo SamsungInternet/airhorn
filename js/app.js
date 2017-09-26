@@ -16,9 +16,15 @@ var _setupAudioBuffer = function(){
     request.responseType = 'arraybuffer';
     //Decode async
     request.onload = function(){
-        audioCtx.decodeAudioData(request.response, function(theBuffer){
-            airhorn_buffer = theBuffer;
-        }, onAudioLoadError);
+
+        audioCtx.decodeAudioData(request.response).then(function(decodedData){
+            airhorn_buffer = decodedData;
+        });
+
+        // audioCtx.decodeAudioData(request.response, function(theBuffer){
+        //     airhorn_buffer = theBuffer;
+        // }, onAudioLoadError);
+
     };
     request.send();
 };
