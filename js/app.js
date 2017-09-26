@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* AUDIO SETUP */
 var _setupAudioBuffer = function(){
     var request = new XMLHttpRequest();
-    request.open('GET', '/sound/airhorn.mp3', true);
+    request.open('GET', 'https://diekus.net/airhorn/sound/airhorn.mp3', true);
     request.responseType = 'arraybuffer';
     //Decode async
     request.onload = function(){
