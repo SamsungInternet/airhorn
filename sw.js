@@ -5,7 +5,7 @@ var urlsToCache = [
     'sound/airhorn.mp3',
     'js/aframe.min.js',
     'js/app.js',
-    'images/airhorner.png',
+    'images/airhorn.png',
     'images/airhornervr.svg',
     'images/favicon.png',
     'images/si4gvr_logo.svg',
